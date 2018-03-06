@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
- import VueNumberFormating from 'vue-number-formating'
+import VueNumberFormating from 'vue-number-formating'
 
- Vue.use(VueNumberFormating);
+Vue.use(VueNumberFormating);
  
 
 
-Vue.component('project-img', {
+Vue.component('package-img', {
 	props: {
 		'img': String,
 		'test': String,
@@ -14,17 +14,22 @@ Vue.component('project-img', {
 	template: '<div><img v-bind:src="img"></div>',
 });
 
-Vue.component('project-title', {
+Vue.component('package-title', {
 	template: '<h1><slot></slot></h1>'
 });
 
-Vue.component('project-price', {
+Vue.component('package-description', {
+	template: "<p class='package_description'><slot></slot></p>"
+});
+
+Vue.component('package-price', {
 	props: {
 		'from': Number, 
 		'to': Number,
 	},
 	computed: {
 		from_money: function(){
+
 			return this.$nF.numberToFormat(this.from)
 		},
 		to_money: function(){
